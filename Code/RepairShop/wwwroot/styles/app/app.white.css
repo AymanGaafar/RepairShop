@@ -1,0 +1,104 @@
+﻿/* Globals */
+body {
+    font-size: 16px;
+    font-family: "RobotoDraft",Arial,sans-serif;
+    font-weight: 300;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Overwrites*/
+paper-input-decorator .label {
+    text-align: start;
+}
+
+/* Sidebar*/
+#sidebar {
+    background: white;
+    height: 100%;
+}
+
+#sidebar #account-bar {
+    border-bottom: 1px solid #DDD;
+    height: 80px;
+    padding: 0 24px;
+}
+
+#sidebar #account-bar #account-icon {
+    color: #DDD; 
+    height: 46px; 
+    width: 46px;
+}
+
+#sidebar core-menu {
+    margin: 0;
+    overflow: hidden;
+}
+
+#sidebar core-item {
+    cursor: pointer;
+    padding: 0 24px;
+}
+
+#sidebar core-item:hover {
+    color: white;
+    box-shadow: 0 0 15px rgb(221, 221, 221);
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+}
+
+#sidebar #logo {
+    bottom: 0;
+    display: block;
+    height: auto;
+    left: 0;
+    margin: 10px auto 0;
+    position: absolute;
+    right: 0;
+    width: 200px;
+}
+
+/* Main Content */
+#main-content {
+}
+
+/* Main Content > Toolbar*/
+#toolbar {
+    background: #7986CB;
+}
+
+#toolbar .top {
+    color: white;
+    font-size: 16px !important;
+}
+
+#toolbar .middle {
+    color: white;
+    font-size: 45px !important;
+}
+
+#toolbar .bottom {
+    color: white;
+    font-size: 16px !important;
+    opacity: 0.6;
+}
+
+/* Search Cont*/
+.search-cont {
+    border: 1px solid rgb(221, 221, 221);
+    margin-bottom: 10px;
+    padding: 0;
+    position: relative;
+}
+
+.search-cont .search-field {
+    border: 0 solid;
+    padding: 5px;
+    width: 100%;
+}
+
+.search-cont .search-icon {
+    color: rgb(170, 170, 170);
+    padding: 5px;
+    right: 0;
+}

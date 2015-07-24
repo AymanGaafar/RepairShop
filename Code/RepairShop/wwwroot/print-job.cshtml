@@ -1,0 +1,353 @@
+﻿@model RepairShop.Models.Job
+@{ 
+    var shopTitle = RepairShop.Helpers.Configuration.Instance.AppName;
+    var wwwroot = "/wwwroot";
+    var countryOfOperation = RepairShop.Helpers.Configuration.Instance.CountryOfOperation;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>Print Job #@Model.Code</title>
+
+    <link rel="stylesheet" type="text/css" href="@wwwroot/styles/common/layouts.css" />
+    <link rel="stylesheet" type="text/css" href="@wwwroot/styles/common/common.css" />
+    <link rel="stylesheet" type="text/css" href="@wwwroot/styles/job-print/job-print.css" />
+</head>
+<body>
+    <div id="root" class="layout vertical center-center">
+        <img id="logo" alt="@shopTitle" src="@wwwroot/images/logo.png" width="363" height="122" />
+
+        <section id="invoice-number">
+            REPAIR INVOICE @Model.Code
+        </section>
+
+        <section>
+            <header>Customer Details</header>
+
+            <div class="layout horizontal">
+                <div class="side">
+                    <div class="field">Name:</div>
+                    <div class="field-value">
+                        @if (Model.Client != null && !Model.Client.DisplayName.IsEmpty())
+                        {
+                            @Model.Client.DisplayName
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Address:</div>
+                    <div class="field-value">
+                        @if (!Model.Client.Address.Line1.IsEmpty() || !Model.Client.Address.Line2.IsEmpty()
+                            || !Model.Client.Address.Line3.IsEmpty())
+                        {
+                            if (!Model.Client.Address.Line1.IsEmpty())
+                            {
+                                <span class="line">@Model.Client.Address.Line1</span>
+                            }
+
+                            if (!Model.Client.Address.Line2.IsEmpty())
+                            {
+                                <span class="line">@Model.Client.Address.Line2</span>
+                            }
+
+                            if (!Model.Client.Address.Line3.IsEmpty())
+                            {
+                                <span class="line">@Model.Client.Address.Line3</span>
+                            }
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">City:</div>
+                    <div class="field-value">
+                        @if (!Model.Client.Address.City.IsEmpty())
+                        {
+                            @Model.Client.Address.City
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Phone No.:</div>
+                    <div class="field-value">N/A</div>
+                </div>
+
+                <div class="side">
+                    <div class="field">Date:</div>
+                    <div class="field-value">
+                        @if (Model.RepairedOn.HasValue)
+                        {
+                            @Model.RepairedOn.Value.ToShortDateString()
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Job Ref No.:</div>
+                    <div class="field-value">@Model.Code</div>
+
+                    <br />
+
+                    <div class="field">Cust ID No.:</div>
+                    <div class="field-value">
+                        @if (Model.Client != null && !Model.Client.Code.IsEmpty())
+                        {
+                            @Model.Client.Code
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Other Notes:</div>
+                    <div class="field-value">
+                        @if (!Model.Notes.IsEmpty())
+                        {
+                            @MvcHtmlString.Create(Model.Notes.Replace("\n", "<br />"))
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section>
+            <header>Job Details</header>
+
+            <div class="layout horizontal">
+                <div class="side">
+                    <div class="field">Phone Model:</div>
+                    <div class="field-value">
+                        @if (Model.Model != null && !Model.Model.Name.IsEmpty())
+                        {
+                            @Model.Model.FullName
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">IMEI Number:</div>
+                    <div class="field-value">
+                        @if (!Model.IMEINumber.IsEmpty())
+                        {
+                            @Model.IMEINumber
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Condition:</div>
+                    <div class="field-value">
+                        @if (Model.Condition != null && !Model.Condition.Name.IsEmpty())
+                        {
+                            @Model.Condition.Name
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Phone Seen Working:</div>
+                    <div class="field-value">
+                        @if (Model.PhoneSeenWorking == true)
+                        {
+                            @:Yes
+                        }
+                        else
+                        {
+                            @:No
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Battery with Phone:</div>
+                    <div class="field-value">
+                        @if (Model.BatteryWithPhone == true)
+                        {
+                            @:Yes
+                        }
+                        else
+                        {
+                            @:No
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Reason for Repair:</div>
+                    <div class="field-value">
+                        @if (Model.JobRepairReasons.Count > 0)
+                        {
+                            var count = Model.JobRepairReasons.Count - 1;
+                            var index = 0;
+
+                            foreach(var jobRepairReason in Model.JobRepairReasons)
+                            {
+                                @MvcHtmlString.Create(jobRepairReason.RepairReason.Title);
+
+                                if(index++ < count)
+                                {
+                                    @MvcHtmlString.Create(", ");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Work Carried Out:</div>
+                    <div class="field-value">
+                        @if (Model.JobWorkDone.Count > 0)
+                        {
+                            var count = Model.JobWorkDone.Count - 1;
+                            var index = 0;
+
+                            foreach(var jobWorkDone in Model.JobWorkDone)
+                            {
+                                @MvcHtmlString.Create(jobWorkDone.WorkDone.Title);
+
+                                if (index++ < count)
+                                {
+                                    @MvcHtmlString.Create(", ");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Work Carried Out By:</div>
+                    <div class="field-value">
+                        @if (Model.WorkDoneBy != null && !Model.WorkDoneBy.DisplayName.IsEmpty())
+                        {
+                            @Model.WorkDoneBy.DisplayName
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </div>
+
+                    <br />
+
+                    <div class="field">Has Warranty:</div>
+                    <div class="field-value">
+                        @if (Model.HasWarranty == true)
+                        {
+                            @:Yes
+                        }
+                        else
+                        {
+                            @:No
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fee">
+            TOTAL &euro; @Math.Round(Model.Fee, 2)
+        </section>
+
+        <section id="footer">
+            <header>@shopTitle.ToUpper() DISCLAIMER</header>
+            <p>
+                I am the rightfull owner of this mobile phone handset
+                or I act as a third party to have it network unlocked or have the security code reseted.
+            </p>
+
+            <p>
+                I can confirm that this handset is not stolen or obtained by theft or fraud.
+                I understand that @shopTitle is not responsible if after having my SIMLOCKS removed I discover my phone is unable
+                to operate on my desired networks due to:
+            </p>
+
+            <ol>
+                <li>
+                    My phone is 'BLACKLISTED' on the CEIR (Central Equipment Identity Register) due to my IMEI number
+                    (International Model Equipment Identification) - being reported lost or stolen.
+                </li>
+                <li>
+                    My phone has a pre internal hardware fault and is unable to register to any @countryOfOperation network.
+                </li>
+            </ol>
+
+            <p>
+                I understand that @shopTitle is unable to make any refunds whatsoever
+                as @shopTitle do not hold any information or history on my phone.
+            </p>
+
+            <div id="signature" class="layout horizontal">
+                <div class="side">
+                    _______________________________________
+                    <br />
+                    Signature of @shopTitle
+                </div>
+
+                <div class="side">
+                    _______________________________________
+                    <br />
+                    Signature of Customer
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function (event)
+        {
+            print();
+        });
+    </script>
+</body>
+</html>

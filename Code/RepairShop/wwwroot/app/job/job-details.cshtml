@@ -1,0 +1,156 @@
+﻿@model RepairShop.Models.Job
+
+<div>
+    <section class="details padded">
+        <header>Details</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Code):</div>
+                <div class="field-value">{{vm.m.Code || "N/A"}}</div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Client):</div>
+                <div class="field-value">
+                    <a ng-if="vm.m.Client" ng-href="{{vm.m.Client.viewUrl}}">{{vm.m.Client.displayName}}</a>
+                    <span ng-if="!vm.m.Client">N/A</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.WorkDoneBy):</div>
+                <div class="field-value">
+                    <a ng-if="vm.m.WorkDoneBy" ng-href="{{vm.m.WorkDoneBy.viewUrl}}">{{vm.m.WorkDoneBy.displayName}}</a>
+                    <span ng-if="!vm.m.WorkDoneBy">N/A</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.BatteryWithPhone):</div>
+                <div class="field-value">
+                    <i ng-if="vm.m.BatteryWithPhone" class="material-icons" style="color: #6CC87E;">check</i>
+                    <i ng-if="!vm.m.BatteryWithPhone" class="material-icons" style="color: #F28C8C;">clear</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Condition):</div>
+                <div class="field-value">
+                    <a ng-if="vm.m.Condition" ng-href="{{vm.m.Condition.viewUrl}}">{{vm.m.Condition.Name}}</a>
+                    <span ng-if="!vm.m.Condition">N/A</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.IMEINumber):</div>
+                <div class="field-value">{{vm.m.IMEINumber || "N/A"}}</div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Model):</div>
+                <div class="field-value">
+                    <a ng-if="vm.m.Model" ng-href="{{vm.m.Model.viewUrl}}">{{vm.m.Model.fullName}}</a>
+                    <span ng-if="!vm.m.Model">N/A</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.PhoneSeenWorking):</div>
+                <div class="field-value">
+                    <i ng-if="vm.m.PhoneSeenWorking" class="material-icons" style="color: #6CC87E;">check</i>
+                    <i ng-if="!vm.m.PhoneSeenWorking" class="material-icons" style="color: #F28C8C;">clear</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">Repair Reasons:</div>
+                <div class="field-value">
+                    <span ng-repeat="jobRepairReason in vm.m.JobRepairReasons">
+                        <a ng-href="{{jobRepairReason.RepairReason.viewUrl}}">
+                            {{jobRepairReason.RepairReason.Title}}
+                        </a>
+                        <span ng-if="!$last">,&nbsp;</span>
+                    </span>
+                    <span ng-if="vm.m.JobRepairReasons.length == 0">
+                        N/A
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">Work Done:</div>
+                <div class="field-value">
+                    <span ng-repeat="jobWorkDone in vm.m.JobWorkDone">
+                        <a ng-href="{{jobWorkDone.WorkDone.viewUrl}}">
+                            {{jobWorkDone.WorkDone.Title}}
+                        </a>
+                        <span ng-if="!$last">,&nbsp;</span>
+                    </span>
+                    <span ng-if="vm.m.JobRepairReasons.length == 0">
+                        N/A
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.RecievedOn):</div>
+                <div class="field-value">{{vm.m.RecievedOn ? vm.m.RecievedOn.toLocaleDateString() : "N/A"}}</div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.RepairedOn):</div>
+                <div class="field-value">{{vm.m.RepairedOn ? vm.m.RepairedOn.toLocaleDateString() : "N/A"}}</div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.HasWarranty):</div>
+                <div class="field-value">
+                    <i ng-if="vm.m.HasWarranty" class="material-icons" style="color: #6CC87E;">check</i>
+                    <i ng-if="!vm.m.HasWarranty" class="material-icons" style="color: #F28C8C;">clear</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Notes):</div>
+                <div class="field-value">{{vm.m.Notes ? vm.m.Notes : "N/A"}}</div>
+            </div>
+        </div>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Fee):</div>
+                <div class="field-value">{{vm.m.Fee | currency : "&euro;" : 2}}</div>
+            </div>
+        </div>
+    </section>
+
+    <status-reporter active="vm.status.isBusy" title="vm.status.title"
+                     description="vm.status.description"></status-reporter>
+</div>

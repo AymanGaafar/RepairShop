@@ -1,0 +1,43 @@
+﻿@model RepairShop.Models.Company
+
+<div>
+    <section class="details padded">
+        <header>Details</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Name):</div>
+                <div class="field-value">{{vm.m.Name || "N/A"}}</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details padded">
+        <header>@Html.DisplayNameFor(model => model.Brands)</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field-value full-width">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Help Link</th>
+                        </tr>
+                        <tr ng-repeat="brand in vm.m.Brands">
+                            <td><a ng-href="{{brand.viewUrl}}">{{brand.Name}}</a></td>
+                            <td>{{brand.Description || "N/A"}}</td>
+                            <td>
+                                <a ng-if="brand.HelpLink" ng-href="{{brand.HelpLink}}" target="_blank">{{brand.HelpLink}}</a>
+                                <span ng-if="!brand.HelpLink">N/A</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <status-reporter active="vm.status.isBusy" title="vm.status.title"
+                     description="vm.status.description"></status-reporter>
+</div>

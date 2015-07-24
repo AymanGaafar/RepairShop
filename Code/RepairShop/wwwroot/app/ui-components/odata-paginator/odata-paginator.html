@@ -1,0 +1,18 @@
+﻿<nav class="odata-paginator layout horizontal center-center">
+    <ul class="pagination">
+        <li ng-class="{active: vm.isFirstPage}" ng-click="vm.goToPage(1)">
+            <a href="" aria-label="First Page" ng-click="vm.goToPage(1)">
+                <span aria-hidden="true">1</span>
+            </a>
+        </li>
+        <li ng-if="1 < page && page < vm.numberOfPages" ng-repeat="page in vm.pages"
+            ng-class="{active: vm.isCurrentPage(page)}" ng-click="vm.goToPage(page)">
+            <a href="">{{page}}</a>
+        </li>
+        <li ng-if="!(vm.isFirstPage && vm.isLastPage)" ng-class="{active: vm.isLastPage}" ng-click="vm.goToPage(vm.numberOfPages)">
+            <a href="" aria-label="Last Page">
+                <span aria-hidden="true">{{vm.numberOfPages}}</span>
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,70 @@
+﻿#root {
+    margin: 0 auto;
+    width: 950px;
+}
+
+#logo {
+
+}
+
+section {
+    margin-top: 20px;
+    padding-top: 10px;
+    width: 100%;
+}
+
+section header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: start;
+    width: 100%;
+}
+
+section .side {
+    width: 50%;
+    /*padding-left: 40px;*/
+}
+
+section .side.full {
+    width: 100%;
+}
+
+.field {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: start;
+    vertical-align: top;
+    width: 200px;
+}
+
+.field-value {
+    display: inline-block;
+    font-size: 14px;
+    text-align: start;
+    vertical-align: top;
+    width: 250px;
+}
+
+.field-value .line {
+    display: block;
+}
+
+section#invoice-number {
+    font-weight: bold;
+    text-align: end;
+}
+
+section#fee {
+    text-align: end;
+}
+
+section#footer {
+    font-size: 12px;
+}
+
+#signature {
+    margin-top: 70px;
+    text-align: center;
+}

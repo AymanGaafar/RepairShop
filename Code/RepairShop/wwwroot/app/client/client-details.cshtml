@@ -1,0 +1,90 @@
+﻿@model RepairShop.Models.Client
+
+<div>
+    <section class="details padded">
+        <header>Personal Details</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Code):</div>
+                <div class="field-value">{{vm.m.Code || "N/A"}}</div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.FirstName):</div>
+                <div class="field-value">{{vm.m.FirstName || "N/A"}}</div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.LastName):</div>
+                <div class="field-value">{{vm.m.LastName || "N/A"}}</div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.RegistrationDate):</div>
+                <div class="field-value">
+                    {{vm.m.RegistrationDate ? vm.m.RegistrationDate.toLocaleDateString() : "N/A"}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details padded">
+        <header>Address Information</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">Address:</div>
+                <div class="field-value" ng-if="vm.m.Address.Line1 || vm.m.Address.Line2 || vm.m.Address.Line3">
+                    <span class="line" ng-if="vm.m.Address.Line1">{{vm.m.Address.Line1}}</span>
+                    <span class="line" ng-if="vm.m.Address.Line2">{{vm.m.Address.Line2}}</span>
+                    <span class="line" ng-if="vm.m.Address.Line3">{{vm.m.Address.Line3}}</span>
+                </div>
+                <div class="field-value" ng-if="!(vm.m.Address.Line1 || vm.m.Address.Line2 || vm.m.Address.Line3)">
+                    N/A
+                </div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Address.PostalCode):</div>
+                <div class="field-value">{{vm.m.Address.PostalCode || "N/A"}}</div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Address.City):</div>
+                <div class="field-value">{{vm.m.Address.City || "N/A"}}</div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Address.Country):</div>
+                <div class="field-value">{{vm.m.Address.Country || "N/A"}}</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details padded">
+        <header>@Html.DisplayNameFor(model => model.Jobs)</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field-value full-width">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Code</th>
+                            <th>Client</th>
+                            <th>Repaired On</th>
+                        </tr>
+                        <tr ng-repeat="job in vm.m.Jobs">
+                            <td><a ng-href="{{job.viewUrl}}">{{job.Code}}</a></td>
+                            <td><a ng-href="{{job.Client.viewUrl}}">{{job.Client.displayName}}</a></td>
+                            <td>{{job.RepairedOn.toLocaleDateString() || "N/A"}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <status-reporter active="vm.status.isBusy" title="vm.status.title"
+                     description="vm.status.description"></status-reporter>
+</div>

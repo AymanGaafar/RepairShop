@@ -1,0 +1,38 @@
+﻿@model RepairShop.Models.WorkDone
+
+<div class="search-cont layout horizontal center">
+    <input class="search-field flex" type="text" ng-model="vm.query"
+           ng-keypress="vm.onQueryKeyPress($event)" />
+    <i class="search-icon material-icons" ng-click="vm.refresh()">search</i>
+</div>
+
+<table class="table table-bordered table-hover">
+    <colgroup>
+        <col style="width: 80%;" />
+        <col style="width: 20%;" />
+    </colgroup>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    <tr ng-repeat="m in vm.ms">
+        <td>
+            {{m.Title}}
+        </td>
+        <td>
+            <a ng-href="{{m.viewUrl}}">View</a> |
+            <a ng-href="{{m.editUrl}}">Edit</a> |
+            <a href="" ng-click="vm.delete(m)">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<odata-paginator count="vm.count" current-page="1" navigated="vm.navigated(e)" page-size="20"></odata-paginator>
+
+<status-reporter active="vm.status.isBusy" title="vm.status.title"
+                 description="vm.status.description"></status-reporter>

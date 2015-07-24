@@ -1,0 +1,24 @@
+﻿body {
+    font-family: Calibri, sans-serif;
+    font-size: 14px;
+}
+
+#page {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+    width: 400px;
+}
+
+paper-input-decorator {
+    margin: 0 auto;
+    text-align: start;
+    width: 280px;
+}
+
+#login {
+    background: none repeat scroll 0 0 #4285f4;
+    color: #fff;
+}

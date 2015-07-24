@@ -1,0 +1,9 @@
+﻿{
+  "AppName": "Repair Shop",
+  "DatabaseConnection": "(localdb)\\ProjectsV12",
+  "DatabaseName": "RepairShop",
+  "DatabasePassword": "",
+  "AdminUsername": "Admin",
+  "AdminPassword": "Password!9",
+  "CountryOfOperation": "Country of Operation"
+}

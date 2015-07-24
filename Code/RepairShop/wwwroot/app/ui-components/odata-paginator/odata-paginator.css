@@ -1,0 +1,18 @@
+﻿.odata-paginator {
+    @apply(--layout-horizontal --layout-center);
+}
+
+.odata-paginator .page {
+    background-color: transparent;
+    color: #333;
+}
+
+.odata-paginator .page.selected {
+    background-color: #7986CB;
+    color: white;
+}
+
+.odata-paginator .separator {
+    border-right: 1px solid #333;
+    margin: 10px 5px;
+}

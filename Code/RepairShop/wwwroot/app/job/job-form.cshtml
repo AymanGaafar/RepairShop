@@ -1,0 +1,294 @@
+﻿@model RepairShop.Models.Job
+
+<div class="form-horizontal">
+    @* Code *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_Code" class="control-label">@Html.DisplayNameFor(model => model.Code):</label>
+            <span class="form-control read-only flex">{{vm.isNew ? "New" : vm.m.Code}}</span>
+        </div>
+        <div ng-if="vm.isDirty('Code')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('Code')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Client *@
+    <div class="form-group">
+        <div class="layout horizontal center-justified">
+            <label for="JobForm_ClientId" class="control-label">@Html.DisplayNameFor(model => model.Client):</label>
+            <select id="JobForm_ClientId" name="ClientId" class="form-control flex"
+                    ng-class="{invalid: vm.isDirty('ClientId') && vm.hasErrors('ClientId')}" ng-model="vm.m.ClientId"
+                    ng-options="client.Key as client.Value for client in vm.lookups.clients"></select>
+            <badge-button ng-if="!vm.loadingClients" icon="'refresh'" mini="true" ng-click="vm.refreshLookups()">></badge-button>
+            <div ng-if="vm.loadingClients" class="layout vertical center-center loading-control">
+                <div class="la-ball-scale-ripple-multiple la-dark">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <badge-button icon="'add'" mini="true" ng-click="vm.newClient()"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('ClientId')" class="validation-cont layout vertical">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('ClientId')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Work Done By *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_WorkDoneById" class="control-label">@Html.DisplayNameFor(model => model.WorkDoneBy):</label>
+            <select id="JobForm_WorkDoneById" name="WorkDoneById" class="form-control flex"
+                    ng-class="{invalid: vm.isDirty('WorkDoneById') && vm.hasErrors('WorkDoneById')}" ng-model="vm.m.WorkDoneById"
+                    ng-options="user.Key as user.Value for user in vm.lookups.users">
+                @*<option ng-repeat="user in vm.lookups.users" ng-value="user.Key">{{user.Value}}</option>*@
+            </select>
+            <badge-button ng-if="!vm.loadingUsers" icon="'refresh'" mini="true" ng-click="vm.refreshLookups()">></badge-button>
+            <div ng-if="vm.loadingUsers" class="layout vertical center-center loading-control">
+                <div class="la-ball-scale-ripple-multiple la-dark">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <badge-button icon="'add'" mini="true" ng-click="vm.newUser()"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('WorkDoneById')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('WorkDoneById')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Model *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_ModelId" class="control-label">@Html.DisplayNameFor(model => model.Model):</label>
+            <select id="JobForm_ModelId" name="ModelId" class="form-control flex"
+                    ng-class="{invalid: vm.isDirty('ModelId') && vm.hasErrors('ModelId')}" ng-model="vm.m.ModelId"
+                    ng-options="model.Key as model.Value for model in vm.lookups.models">
+                @*<option ng-repeat="model in vm.lookups.models" ng-value="model.Key">{{model.Value}}</option>*@
+            </select>
+            <badge-button ng-if="!vm.loadingModels" icon="'refresh'" mini="true" ng-click="vm.refreshLookups()">></badge-button>
+            <div ng-if="vm.loadingModels" class="layout vertical center-center loading-control">
+                <div class="la-ball-scale-ripple-multiple la-dark">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <badge-button icon="'add'" mini="true" ng-click="vm.newModel()"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('ModelId')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('ModelId')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Recieved On *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_RecievedOn" class="control-label">@Html.DisplayNameFor(model => model.RecievedOn):</label>
+            @*<input id="JobForm_RecievedOn" name="RecievedOn" type="date" class="form-control flex"
+                placeholder="dd/mm/yyyy"
+                ng-class="{invalid: vm.isDirty('RecievedOn') && vm.hasErrors('RecievedOn')}"
+                ng-model="vm.m.RecievedOn" />*@
+            @*
+                <datetimepicker ng-model="vm.m.RecievedOn"
+                                datetimepicker-config="{ startView:'day', minView:'day', dropdownSelector:'#JobForm_RecievedOn' }">
+                </datetimepicker>*@
+            <div class="form-control flex" style="position: relative;"
+                 ng-class="{invalid: vm.isDirty('RecievedOn') && vm.hasErrors('RecievedOn')}">
+                <a class="dropdown-toggle" id="JobForm_RecievedOn" role="button" data-toggle="dropdown" data-target="#" href="#">
+                    {{(vm.m.RecievedOn | date:'dd MMM, yyyy') || "Set Date"}}
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <datetimepicker ng-model="vm.m.RecievedOn"
+                                    datetimepicker-config="{ startView:'day', minView:'day', dropdownSelector:'#JobForm_RecievedOn' }" />
+                </ul>
+            </div>
+            <badge-button icon="'clear'" mini="true" ng-click="vm.m.RecievedOn=null;"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('RecievedOn')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('RecievedOn')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Condition *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_ConditionId" class="control-label">@Html.DisplayNameFor(model => model.Condition):</label>
+            <select id="JobForm_ConditionId" name="ConditionId" class="form-control flex"
+                    ng-class="{invalid: vm.isDirty('ConditionId') && vm.hasErrors('ConditionId')}" ng-model="vm.m.ConditionId"
+                    ng-options="condition.Key as condition.Value for condition in vm.lookups.conditions">
+                @*<option ng-repeat="condition in vm.conditions" ng-value="condition.Key">{{condition.Value}}</option>*@
+            </select>
+            <badge-button ng-if="!vm.loadingConditions" icon="'refresh'" mini="true" ng-click="vm.refreshLookups()">></badge-button>
+            <div ng-if="vm.loadingConditions" class="layout vertical center-center loading-control">
+                <div class="la-ball-scale-ripple-multiple la-dark">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <badge-button icon="'add'" mini="true" ng-click="vm.newCondition()"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('ConditionId')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('ConditionId')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Battery With Phone *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_BatteryWithPhone" class="control-label">@Html.DisplayNameFor(model => model.BatteryWithPhone):</label>
+            <input id="JobForm_BatteryWithPhone" name="BatteryWithPhone" type="checkbox" class="form-control flex"
+                   ng-class="{invalid: vm.isDirty('BatteryWithPhone') && vm.hasErrors('BatteryWithPhone')}" ng-model="vm.m.BatteryWithPhone" />
+        </div>
+        <div ng-if="vm.isDirty('BatteryWithPhone')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('BatteryWithPhone')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* IMEI Number *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_IMEINumber" class="control-label">@Html.DisplayNameFor(model => model.IMEINumber):</label>
+            <input id="JobForm_IMEINumber" name="IMEINumber" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.IMEINumber)"
+                   ng-class="{invalid: vm.isDirty('IMEINumber') && vm.hasErrors('IMEINumber')}" ng-model="vm.m.IMEINumber" />
+        </div>
+        <div ng-if="vm.isDirty('IMEINumber')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('IMEINumber')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Phone Seen Working *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_PhoneSeenWorking" class="control-label">@Html.DisplayNameFor(model => model.PhoneSeenWorking):</label>
+            <input id="JobForm_PhoneSeenWorking" name="PhoneSeenWorking" type="checkbox" class="form-control flex"
+                   ng-class="{invalid: vm.isDirty('PhoneSeenWorking') && vm.hasErrors('PhoneSeenWorking')}" ng-model="vm.m.PhoneSeenWorking" />
+        </div>
+        <div ng-if="vm.isDirty('PhoneSeenWorking')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('PhoneSeenWorking')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Has Warranty *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_HasWarranty" class="control-label">@Html.DisplayNameFor(model => model.HasWarranty):</label>
+            <input id="JobForm_HasWarranty" name="HasWarranty" type="checkbox" class="form-control flex"
+                   ng-class="{invalid: vm.isDirty('HasWarranty') && vm.hasErrors('HasWarranty')}" ng-model="vm.m.HasWarranty" />
+        </div>
+        <div ng-if="vm.isDirty('HasWarranty')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('HasWarranty')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Repair Reasons *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label @*for="JobForm_ReasonForRepair"*@ class="control-label">Repair Reasons:</label>
+            <div class="container form-control flex layout horizontal wrap">
+                <label class="group" ng-repeat="repairReason in vm.lookups.repairReasons">
+                    <input type="checkbox"
+                           ng-checked="vm.hasRepairReason(repairReason.Key)"
+                           ng-click="vm.repairReasonChanged(repairReason.Key, $event)" />
+                    <span>{{repairReason.Value}}</span>
+                </label>
+            </div>
+            <badge-button ng-if="!vm.loadingRepairReasons" icon="'refresh'" mini="true" ng-click="vm.refreshLookups()">></badge-button>
+            <div ng-if="vm.loadingRepairReasons" class="layout vertical center-center loading-control">
+                <div class="la-ball-scale-ripple-multiple la-dark">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <badge-button icon="'add'" mini="true" ng-click="vm.newRepairReason()"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('ReasonForRepair')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('ReasonForRepair')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Repaired On *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_RepairedOn" class="control-label">@Html.DisplayNameFor(model => model.RepairedOn):</label>
+            @*<input id="JobForm_RepairedOn" name="RepairedOn" type="text" class="form-control flex"
+                placeholder="@Html.DisplayNameFor(model => model.RepairedOn)"
+                ng-class="{invalid: vm.isDirty('RepairedOn') && vm.hasErrors('RepairedOn')}" ng-model="vm.m.RepairedOn" />*@
+
+            <div class="form-control flex" style="position: relative;"
+                 ng-class="{invalid: vm.isDirty('RepairedOn') && vm.hasErrors('RepairedOn')}">
+                <a id="JobForm_RepairedOn" class="dropdown-toggle" role="button"
+                   data-toggle="dropdown" data-target="#" href="#">
+                    {{(vm.m.RepairedOn | date:'dd MMM, yyyy') || "Set Date"}}
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <datetimepicker ng-model="vm.m.RepairedOn"
+                                    datetimepicker-config="{ startView:'day', minView:'day', dropdownSelector:'#JobForm_RepairedOn' }" />
+                </ul>
+            </div>
+            <badge-button icon="'clear'" mini="true" ng-click="vm.m.RepairedOn=null;"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('RepairedOn')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('RepairedOn')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Work Done *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_WorkDone" class="control-label">Work Done:</label>
+            <div class="container form-control flex layout horizontal wrap">
+                <label class="group" ng-repeat="workDone in vm.lookups.workDone">
+                    <input type="checkbox"
+                           ng-checked="vm.hasWorkDone(workDone.Key)"
+                           ng-click="vm.workDoneChanged(workDone.Key, $event)" />
+                    <span>{{workDone.Value}}</span>
+                </label>
+            </div>
+            <badge-button ng-if="!vm.loadingWorkDone" icon="'refresh'" mini="true" ng-click="vm.refreshLookups()">></badge-button>
+            <div ng-if="vm.loadingWorkDone" class="layout vertical center-center loading-control">
+                <div class="la-ball-scale-ripple-multiple la-dark">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <badge-button icon="'add'" mini="true" ng-click="vm.newWorkDone()"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('WorkDone')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('WorkDone')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Notes *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_Notes" class="control-label">@Html.DisplayNameFor(model => model.Notes):</label>
+            <textarea id="JobForm_Notes" name="Notes" class="form-control flex"
+                      ng-class="{invalid: vm.isDirty('Notes') && vm.hasErrors('Notes')}" ng-model="vm.m.Notes"></textarea>
+        </div>
+        <div ng-if="vm.isDirty('Notes')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('Notes')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    @* Fee *@
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="JobForm_Fee" class="control-label">@Html.DisplayNameFor(model => model.Fee):</label>
+            <input id="JobForm_Fee" name="Fee" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.Fee)"
+                   ng-class="{invalid: vm.isDirty('Fee') && vm.hasErrors('Fee')}" ng-model="vm.m.Fee" />
+        </div>
+        <div ng-if="vm.isDirty('Fee')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('Fee')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<status-reporter active="vm.status.isBusy" title="vm.status.title"
+                 description="vm.status.description"></status-reporter>

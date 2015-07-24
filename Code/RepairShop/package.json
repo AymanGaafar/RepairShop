@@ -1,0 +1,8 @@
+{
+  "jspm": {
+    "directories": {
+      "baseURL": "wwwroot"
+    },
+    "configFile": "wwwroot/libraries/systemjs/config.js"
+  }
+}

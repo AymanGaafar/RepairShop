@@ -1,0 +1,18 @@
+﻿@model RepairShop.Models.Company
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="CompanyForm_Name" class="control-label">@Html.DisplayNameFor(model => model.Name): </label>
+            <input id="CompanyForm_Name" name="Name" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.Name)"
+                   ng-class="{invalid: vm.isDirty('Name') && vm.hasErrors('Name')}" ng-model="vm.m.Name" />
+        </div>
+        <div ng-if="vm.isDirty('Name')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('Name')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<status-reporter active="vm.status.isBusy" title="vm.status.title"
+                 description="vm.status.description"></status-reporter>

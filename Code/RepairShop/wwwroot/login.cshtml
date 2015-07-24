@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Repair Shop - Login";
+}
+
+@section header_includes {
+    @Scripts.Render("~/bundles/scripts/login/header")
+
+    <link href="/wwwroot/styles/login.css" rel="stylesheet" />
+}
+
+<div id="page" ng-controller="LoginViewModel">
+    <div>
+        <img src="/wwwroot/images/logo.png" />
+        <br />
+
+            <input id="username" type="text" ng-model="vm.username" />
+        <br />
+
+            <input id="password" type="password" ng-model="vm.password" />
+        <br />
+
+        <button id="login" ng-click="vm.login_click()">Log in</button>
+    </div>
+</div>
+
+@section footer_includes {
+    @Scripts.Render("~/bundles/scripts/login/footer")
+}

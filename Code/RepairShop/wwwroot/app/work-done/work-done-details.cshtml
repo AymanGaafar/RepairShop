@@ -1,0 +1,44 @@
+﻿@model RepairShop.Models.WorkDone
+
+<div>
+    <section class="details padded">
+        <header>Details</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Title):</div>
+                <div class="field-value">{{vm.m.Title || "N/A"}}</div>
+            </div>
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Description):</div>
+                <div class="field-value">{{vm.m.Description || "N/A"}}</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details padded">
+        <header>Jobs</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field-value full-width">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Code</th>
+                            <th>Client</th>
+                            <th>Repaired On</th>
+                        </tr>
+                        <tr ng-repeat="jobWorkDone in vm.m.JobWorkDone">
+                            <td><a ng-href="{{jobWorkDone.Job.viewUrl}}">{{jobWorkDone.Job.Code}}</a></td>
+                            <td><a ng-href="{{jobWorkDone.Job.Client.viewUrl}}">{{jobWorkDone.Job.Client.displayName}}</a></td>
+                            <td>{{jobWorkDone.Job.RepairedOn.toLocaleDateString() || "N/A"}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <status-reporter active="vm.status.isBusy" title="vm.status.title"
+                     description="vm.status.description"></status-reporter>
+</div>

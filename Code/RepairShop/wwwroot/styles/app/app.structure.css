@@ -1,0 +1,338 @@
+﻿/*#region Globals */
+/*#endregion*/
+
+/*#region Overwrites*/
+
+/*#region Form*/
+
+input:active, input:focus {
+    border-color: transparent;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-control {
+    border-color: #ddd;
+    border-style: dotted;
+    border-width: 0 0 2px 0;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-control.read-only {
+    border: none;
+    line-height: 24px;
+}
+
+.container.form-control {
+     border-width: 2px;
+     height: auto;
+     max-height: 75px;
+     overflow: auto;
+ }
+
+textarea.form-control {
+    border-width: 2px;
+    resize: vertical;
+}
+
+.form-control:focus {
+    border-color: #66afe9;
+    border-style: solid;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-control.invalid {
+    border-color: rgba(187, 84, 101, 0.6);
+}
+
+.form-control.invalid:focus {
+    border-color: #BB5465;
+}
+
+label {
+    font-weight: 400;
+}
+
+.container.form-control label.group {
+    margin: 0 10px;
+    width: 21%;
+}
+
+.form-horizontal .control-label {
+    margin-right: 20px;
+    white-space: pre;
+    width: 150px;
+}
+
+.form-horizontal .loading-control {
+    height: 40px;
+    width: 40px;
+}
+
+.form-horizontal .validation-cont {
+    color: #BB5465;
+    font-size: 14px;
+    padding-left: 170px;
+}
+
+/*#endregion*/
+
+/*#endregion*/
+
+/*#region root */
+
+#root {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+/*#endregion */
+
+/*#region Sidebar */
+
+#sidebar {
+    height: 100%;
+    width: 265px;
+}
+
+#sidebar #account-bar {
+    border-bottom: 1px solid;
+    height: 80px;
+    padding: 0 24px;
+    /* width: 100%; */
+}
+
+#sidebar #account-bar #account-icon {
+    /*font-size: 1.5em;
+    height: 46px; 
+    width: 46px;*/
+}
+
+#sidebar #account-bar #account-details {
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+#sidebar #account-bar #account-details #account-name {
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#sidebar #sidebar-menu {
+    margin: 0;
+    overflow: auto;
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem {
+    cursor: pointer;
+    min-height: 48px;
+    outline: none;
+    padding: 0 24px;
+    text-decoration: none;
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem:hover {
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem .sidebar-menuicon {
+    /*height: 20px;*/
+    vertical-align: middle;
+    /*width: 20px;*/
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem .sidebar-menutitle {
+    vertical-align: middle;
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem:hover .sidebar-menuicon {
+}
+
+#sidebar #sidebar-menu .sidebar-subcommands {
+    /*border-left: 1px solid rgb(221, 221, 221);*/
+    cursor: pointer;
+    text-align: center;
+    width: 50px;
+}
+
+#sidebar #sidebar-menu .sidebar-subcommands .sidebar-subcommands-menu {
+    background: none repeat scroll 0 0;
+    border: 1px solid;
+    display: none;
+    left: 248px;
+    list-style: outside none none;
+    padding: 0;
+    position: absolute;
+    z-index: 200;
+}
+
+#sidebar #sidebar-menu .sidebar-subcommands:hover .sidebar-subcommands-menu {
+    display: block;
+}
+
+#sidebar #sidebar-footer {
+    position: relative;
+}
+
+#sidebar #logo {
+    bottom: 0;
+    display: block;
+    height: auto;
+    left: 0;
+    margin: 10px auto 0;
+    /*position: absolute;*/
+    right: 0;
+    width: 200px;
+}
+
+/*#endregion*/
+
+/*#region Main Content */
+
+#main-content {
+    height: 100%;
+    /*overflow: auto;*/
+    position: relative;
+}
+
+/*#region Main Content > Toolbar */
+
+#toolbar {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /*display: block;*/
+    height: 80px;
+    padding: 0 16px;
+    position: relative;
+}
+
+#toolbar .title {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 27px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*#toolbar [title] {
+    line-height: normal;
+    margin-left: 56px;
+}
+
+#toolbar .top {
+    color: white;
+    font-size: 16px !important;
+}
+
+#toolbar .middle {
+    color: white;
+    font-size: 45px !important;
+}
+
+#toolbar .bottom {
+    color: white;
+    font-size: 16px !important;
+    opacity: 0.6;
+}*/
+
+/*#endregion */
+
+#main-content #view {
+    overflow: auto;
+    padding: 24px;
+}
+
+/*#region Search Cont*/
+
+.search-cont {
+    /*@apply(--layout-horizontal --layout-center);*/
+    border: 1px solid rgb(221, 221, 221);
+    margin-bottom: 10px;
+    padding: 0;
+    position: relative;
+}
+
+.search-cont .search-field {
+    border: 0 solid;
+    padding: 5px;
+}
+
+.search-cont .search-icon {
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    line-height: 20px;
+    padding: 5px;
+    text-align: center;
+    width: 32px;
+}
+
+/*#endregion */
+
+/*#region Details*/
+
+section.details {
+    margin-bottom: 20px;
+    padding-top: 10px;
+    width: 100%;
+}
+
+section.details header {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: start;
+    width: 100%;
+}
+
+section.details.padded .details-content {
+    padding-left: 30px;
+}
+
+section.details .side {
+    width: 50%;
+}
+
+section.details .field {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: start;
+    vertical-align: top;
+    width: 200px;
+}
+
+section.details .field-value {
+    display: inline-block;
+    font-size: 14px;
+    text-align: start;
+    vertical-align: top;
+    width: auto;
+}
+
+section.details .field-value.full-width {
+    width: 100%;
+}
+
+section.details .field-value .line {
+    display: block;
+}
+
+/*#endregion*/
+
+/*#endregion*/

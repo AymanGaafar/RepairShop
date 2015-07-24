@@ -1,0 +1,40 @@
+﻿@model RepairShop.Models.Condition
+
+<div>
+    <section class="details padded">
+        <header>Details</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Name):</div>
+                <div class="field-value">{{vm.m.Name || "N/A"}}</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details padded">
+        <header>@Html.DisplayNameFor(model => model.Jobs)</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field-value full-width">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Code</th>
+                            <th>Client</th>
+                            <th>Repaired On</th>
+                        </tr>
+                        <tr ng-repeat="job in vm.m.Jobs">
+                            <td><a ng-href="{{job.viewUrl}}">{{job.Code}}</a></td>
+                            <td><a ng-href="{{job.Client.viewUrl}}">{{job.Client.displayName}}</a></td>
+                            <td>{{job.RepairedOn.toLocaleDateString() || "N/A"}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <status-reporter active="vm.status.isBusy" title="vm.status.title"
+                     description="vm.status.description"></status-reporter>
+</div>

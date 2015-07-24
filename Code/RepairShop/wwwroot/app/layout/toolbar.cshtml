@@ -1,0 +1,30 @@
+﻿<div id="toolbar" class="layout horizontal center" ng-style="{'background-color': vm.toolbar.backColor}">
+    @*Top*@
+    <div class="start-commands layout horizontal center">
+        <badge-button class="command" icon="'menu'" ng-style="{color: vm.toolbar.color}"></badge-button>
+    </div>
+
+    <div class="title flex" ng-style="{color: vm.toolbar.color}">
+        {{vm.toolbar.title}}
+    </div>
+
+    <div class="end-commands layout horizontal center">
+        @*<iron-tooltip ng-repeat="action in vm.toolbar.actions"
+                          label="{{action.tooltip.title}}"
+                          position="{{action.tooltip.position}}">
+                <paper-icon-button icon="{{action.icon}}"
+                                   ng-style="{'background-color': action.backColor, color: action.color}"
+                                   ng-click="action.click($event)">
+
+                    {{action.title}}
+                </paper-icon-button>
+            </iron-tooltip>*@
+        <badge-button class="command"
+                      icon="action.icon"
+                      mini="true"
+                      ng-repeat="action in vm.toolbar.actions"
+                      ng-style="{'background-color': action.backColor, color: action.color}"
+                      ng-click="action.click($event)">
+        </badge-button>
+    </div>
+</div>

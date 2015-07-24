@@ -1,0 +1,128 @@
+﻿@model RepairShop.Models.User
+
+<div class="form-horizontal">
+    <h3>Personal Details</h3>
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_UserName" class="control-label">@Html.DisplayNameFor(model => model.UserName): </label>
+            <input id="UserForm_UserName" name="UserName" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.UserName)"
+                   ng-class="{invalid: vm.isDirty('UserName') && vm.hasErrors('UserName')}" ng-model="vm.m.UserName" />
+        </div>
+        <div ng-if="vm.isDirty('UserName')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('UserName')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_FirstName" class="control-label">@Html.DisplayNameFor(model => model.FirstName):</label>
+            <input id="UserForm_FirstName" name="FirstName" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.FirstName)"
+                   ng-class="{invalid: vm.isDirty('FirstName') && vm.hasErrors('FirstName')}" ng-model="vm.m.FirstName" />
+        </div>
+        <div ng-if="vm.isDirty('FirstName')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('FirstName')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_LastName" class="control-label">@Html.DisplayNameFor(model => model.LastName):</label>
+            <input id="UserForm_LastName" name="LastName" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.LastName)"
+                   ng-class="{invalid: vm.isDirty('LastName') && vm.hasErrors('LastName')}" ng-model="vm.m.LastName" />
+        </div>
+        <div ng-if="vm.isDirty('LastName')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('LastName')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_IdNumber" class="control-label">@Html.DisplayNameFor(model => model.IdNumber):</label>
+            <input id="UserForm_IdNumber" name="IdNumber" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.IdNumber)"
+                   ng-class="{invalid: vm.isDirty('IdNumber') && vm.hasErrors('IdNumber')}" ng-model="vm.m.IdNumber" />
+        </div>
+        <div ng-if="vm.isDirty('IdNumber')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('IdNumber')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_BirthDate" class="control-label">@Html.DisplayNameFor(model => model.BirthDate):</label>
+            <input id="UserForm_BirthDate" name="BirthDate" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.BirthDate)"
+                   ng-class="{invalid: vm.isDirty('BirthDate') && vm.hasErrors('BirthDate')}" ng-model="vm.m.BirthDate" />
+        </div>
+        <div ng-if="vm.isDirty('BirthDate')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('BirthDate')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_Email" class="control-label">@Html.DisplayNameFor(model => model.Email):</label>
+            <input id="UserForm_Email" name="Email" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.Email)"
+                   ng-class="{invalid: vm.isDirty('Email') && vm.hasErrors('Email')}" ng-model="vm.m.Email" />
+        </div>
+        <div ng-if="vm.isDirty('Email')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('Email')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <h3>Contact Information</h3>
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_ContactInfo.EmailAddress" class="control-label">@Html.DisplayNameFor(model => model.ContactInfo.EmailAddress): </label>
+            <input id="UserForm_ContactInfo.EmailAddress" name="ContactInfo.EmailAddress" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.ContactInfo.EmailAddress)"
+                   ng-class="{invalid: vm.isDirty('ContactInfo.EmailAddress') && vm.hasErrors('ContactInfo.EmailAddress')}" ng-model="vm.m.ContactInfo.EmailAddress" />
+        </div>
+        <div ng-if="vm.isDirty('ContactInfo.EmailAddress')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('ContactInfo.EmailAddress')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_ContactInfo.FaxNumber" class="control-label">@Html.DisplayNameFor(model => model.ContactInfo.FaxNumber): </label>
+            <input id="UserForm_ContactInfo.FaxNumber" name="ContactInfo.FaxNumber" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.ContactInfo.FaxNumber)"
+                   ng-class="{invalid: vm.isDirty('ContactInfo.FaxNumber') && vm.hasErrors('ContactInfo.FaxNumber')}" ng-model="vm.m.ContactInfo.FaxNumber" />
+        </div>
+        <div ng-if="vm.isDirty('ContactInfo.FaxNumber')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('ContactInfo.FaxNumber')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_ContactInfo.MobileNumber" class="control-label">@Html.DisplayNameFor(model => model.ContactInfo.MobileNumber): </label>
+            <input id="UserForm_ContactInfo.MobileNumber" name="ContactInfo.MobileNumber" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.ContactInfo.MobileNumber)"
+                   ng-class="{invalid: vm.isDirty('ContactInfo.MobileNumber') && vm.hasErrors('ContactInfo.MobileNumber')}" ng-model="vm.m.ContactInfo.MobileNumber" />
+        </div>
+        <div ng-if="vm.isDirty('ContactInfo.MobileNumber')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('ContactInfo.MobileNumber')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="UserForm_ContactInfo.PhoneNumber" class="control-label">@Html.DisplayNameFor(model => model.ContactInfo.PhoneNumber): </label>
+            <input id="UserForm_ContactInfo.PhoneNumber" name="ContactInfo.PhoneNumber" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.ContactInfo.PhoneNumber)"
+                   ng-class="{invalid: vm.isDirty('ContactInfo.PhoneNumber') && vm.hasErrors('ContactInfo.PhoneNumber')}" ng-model="vm.m.ContactInfo.PhoneNumber" />
+        </div>
+        <div ng-if="vm.isDirty('ContactInfo.PhoneNumber')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('ContactInfo.PhoneNumber')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<status-reporter active="vm.status.isBusy" title="vm.status.title"
+                 description="vm.status.description"></status-reporter>

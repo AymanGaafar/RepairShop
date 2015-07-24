@@ -1,0 +1,90 @@
+﻿/*#region Globals */
+/*#endregion*/
+
+/*#region Overwrites*/
+/*#endregion*/
+
+/*#region root */
+/*#endregion */
+
+/*#region Sidebar */
+#sidebar {
+    background: #EEE;
+}
+
+#sidebar #account-bar {
+    border-bottom: 1px solid #DDD;
+}
+
+#sidebar #account-bar #account-icon {
+    color: #DDD;
+}
+
+#sidebar #sidebar-menu {
+    background: transparent;
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 15px rgb(221, 221, 221);
+    color: white;
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem sidebar-menuicon {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#sidebar #sidebar-menu .sidebar-menuitem:hover sidebar-menuicon {
+    color: white;
+}
+
+#sidebar #sidebar-menu .sidebar-subcommands .sidebar-subcommands-menu {
+    background-color: #EEE;
+    border-color: #333;
+}
+/*#endregion*/
+
+/*#region Main Content */
+
+/*#region Main Content > Toolbar */
+
+#toolbar {
+    background: #547FBB;
+}
+
+#toolbar .top {
+    color: white;
+}
+
+#toolbar .middle {
+    color: white;
+}
+
+#toolbar .bottom {
+    color: rgba(255, 255, 255, .6);
+}
+
+/*#endregion */
+
+/*#region Search Cont */
+
+.search-cont {
+    /*@apply(--layout-horizontal --layout-center);*/
+    border-color: rgb(221, 221, 221);
+}
+
+.search-cont .search-field {
+    color: #333;
+}
+
+.search-cont .search-icon {
+    color: rgb(170, 170, 170);
+}
+
+/*#endregion*/
+
+/*#endregion*/

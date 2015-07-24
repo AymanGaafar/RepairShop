@@ -1,0 +1,45 @@
+﻿<div id="sidebar" ng-controller="SidebarViewModel" class="layout vertical">
+    <div id="account-bar" class="layout horizontal center">
+        <span id="account-icon" class="material-icons md-48">
+            account_circle
+        </span>
+
+        <div id="account-details" class="layout vertical">
+            <a id="account-name" ng-href="{{vm.signedInUser.viewUrl}}">{{vm.signedInUser.displayName}}</a>
+            <a href="" ng-click="vm.signedInUser.signout()">Sign out</a>
+        </div>
+    </div>
+
+    <div id="sidebar-menu" class="flex">
+        <div ng-repeat="item in vm.items | orderBy: 'order'" class="layout horizontal">
+            <a ng-href="{{item.url}}" class="sidebar-menuitem flex layout horizontal center">
+                <i class="sidebar-menuicon material-icons">{{item.icon}}</i>
+                &nbsp;
+                <span class="sidebar-menutitle">{{item.title}}</span>
+            </a>
+            <div ng-if="item.subCommands.length>0" class="sidebar-subcommands">
+                @* Important to set the menu above the <a> tags, due to UI positions. *@
+                <ul ng-if="item.subCommands.length>1" class="sidebar-subcommands-menu">
+                    <li ng-repeat="subCommand in item.subCommands">
+                        <a class="sidebar-menuitem layout horizontal center-center" ng-href="{{subCommand.url}}">
+                            <i class="sidebar-menuicon material-icons">{{subCommand.icon}}</i>
+                            &nbsp;
+                            <span class="sidebar-menutitle">{{subCommand.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+                <a ng-if="item.subCommands.length==1" class="sidebar-menuitem layout horizontal center-center" 
+                   ng-href="{{item.subCommands[0].url}}" title="{{item.subCommands[0].title}}">
+                    <i class="sidebar-menuicon material-icons">{{item.subCommands[0].icon}}</i>
+                </a>
+                <a ng-if="item.subCommands.length>1" class="sidebar-menuitem layout horizontal center-center">
+                    <i class="sidebar-menuicon material-icons">chevron_right</i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="sidebar-footer">
+        <img id="logo" src="/wwwroot/images/logo.png" />
+    </div>
+</div>

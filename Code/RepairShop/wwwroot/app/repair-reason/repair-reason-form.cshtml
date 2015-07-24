@@ -1,0 +1,29 @@
+﻿@model RepairShop.Models.RepairReason
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="RepairReasonForm_Title" class="control-label">@Html.DisplayNameFor(model => model.Title): </label>
+            <input id="RepairReasonForm_Title" name="Title" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.Title)"
+                   ng-class="{invalid: vm.isDirty('Title') && vm.hasErrors('Title')}" ng-model="vm.m.Title" />
+        </div>
+        <div ng-if="vm.isDirty('Title')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('Title')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="RepairReasonForm_Description" class="control-label">@Html.DisplayNameFor(model => model.Description): </label>
+            <input id="RepairReasonForm_Description" name="Description" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.Description)"
+                   ng-class="{invalid: vm.isDirty('Description') && vm.hasErrors('Description')}" ng-model="vm.m.Description" />
+        </div>
+        <div ng-if="vm.isDirty('Description')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('Description')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<status-reporter active="vm.status.isBusy" title="vm.status.title"
+                 description="vm.status.description"></status-reporter>

@@ -1,0 +1,29 @@
+﻿#status-reporter {
+    background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+    bottom: 0;
+    color: white;
+    display: none;
+    font-size: 20px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#status-reporter.active {
+    display: flex;
+}
+
+#status-reporter #spinner {
+    margin-bottom: 30px;
+}
+
+#status-reporter #status-reporter-title {
+    margin-bottom: 10px;
+}
+
+#status-reporter #status-reporter-description {
+    font-size: 16px;
+}

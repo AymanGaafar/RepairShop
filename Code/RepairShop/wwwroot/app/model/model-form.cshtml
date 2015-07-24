@@ -1,0 +1,46 @@
+﻿@model RepairShop.Models.Model
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="ModelForm_Name" class="control-label">@Html.DisplayNameFor(model => model.Name): </label>
+            <input id="ModelForm_Name" name="Name" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.Name)"
+                   ng-class="{invalid: vm.isDirty('Name') && vm.hasErrors('Name')}" ng-model="vm.m.Name" />
+        </div>
+        <div ng-if="vm.isDirty('Name')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('Name')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="ModelForm_BrandId" class="control-label">Brand:</label>
+            <select id="ModelForm_BrandId" name="BrandId" class="form-control flex"
+                    ng-class="{invalid: vm.isDirty('BrandId') && vm.hasErrors('BrandId')}" ng-model="vm.m.BrandId"
+                    ng-options="brand.Key as brand.Value for brand in vm.lookups.brands">
+                @*<option ng-repeat="brand in vm.lookups.brands" ng-value="brand.Key">{{brand.Value}}</option>*@
+            </select>
+            <badge-button icon="'refresh'" mini="true" ng-click="vm.refreshBrands()">></badge-button>
+            <badge-button icon="'add'" mini="true" ng-click="vm.newBrand()"></badge-button>
+        </div>
+        <div ng-if="vm.isDirty('BrandId')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('BrandId')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="layout horizontal">
+            <label for="ModelForm_HelpLink" class="control-label">@Html.DisplayNameFor(model => model.HelpLink): </label>
+            <input id="ModelForm_HelpLink" name="HelpLink" type="text" class="form-control flex"
+                   placeholder="@Html.DisplayNameFor(model => model.HelpLink)"
+                   ng-class="{invalid: vm.isDirty('HelpLink') && vm.hasErrors('HelpLink')}" ng-model="vm.m.HelpLink" />
+        </div>
+        <div ng-if="vm.isDirty('HelpLink')" class="validation-cont">
+            <span class="validation-entry" ng-repeat="error in vm.getErrors('HelpLink')">{{error.errorMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<status-reporter active="vm.status.isBusy" title="vm.status.title"
+                 description="vm.status.description"></status-reporter>

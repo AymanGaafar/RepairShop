@@ -1,0 +1,31 @@
+﻿@section header_includes {
+    @Scripts.Render("~/bundles/scripts/app/header")
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" />
+
+    @Styles.Render("~/bundles/styles/app")
+
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/styles/app/app.gray.css" />
+}
+
+<base href="/" />
+<div id="root" ng-controller="AppViewModel" class="layout horizontal">
+    @* Sidebar *@
+    @RenderPage("app/layout/sidebar.cshtml")
+
+    <div id="main-content" class="flex layout vertical">
+        @* Toolbar *@
+        @RenderPage("app/layout/toolbar.cshtml")
+
+        <div id="view" class="flex" ng-view></div>
+
+        @* Sidebar *@
+        @*@RenderPage("StatusReporter.cshtml")*@
+        <status-reporter active="vm.status.isBusy" title="vm.status.title"
+                         description="vm.status.description"></status-reporter>
+    </div>
+</div>
+
+@section footer_includes {
+    @Scripts.Render("~/bundles/scripts/app/footer")
+}

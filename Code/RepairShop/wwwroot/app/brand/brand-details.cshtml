@@ -1,0 +1,67 @@
+﻿@model RepairShop.Models.Brand
+
+<div>
+    <section class="details padded">
+        <header>Details</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.FullName):</div>
+                <div class="field-value">{{vm.m.fullName || "N/A"}}</div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Name):</div>
+                <div class="field-value">{{vm.m.Name || "N/A"}}</div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">Company:</div>
+                <div class="field-value">
+                    <a ng-if="vm.m.Company" ng-href="{{vm.m.Company.viewUrl}}">{{vm.m.Company.Name}}</a>
+                    <span ng-if="!vm.m.Company">N/A</span>
+                </div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.Description):</div>
+                <div class="field-value">{{vm.m.Description|| "N/A"}}</div>
+            </div>
+
+            <div class="details-group">
+                <div class="field">@Html.DisplayNameFor(model => model.HelpLink):</div>
+                <div class="field-value">
+                    <a ng-if="vm.m.HelpLink" ng-href="{{vm.m.HelpLink}}" target="_blank">{{vm.m.HelpLink}}</a>
+                    <span ng-if="!vm.m.HelpLink">N/A</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details padded">
+        <header>@Html.DisplayNameFor(model => model.Models)</header>
+
+        <div class="details-content">
+            <div class="details-group">
+                <div class="field-value full-width">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Name</th>
+                            <th>Help Link</th>
+                        </tr>
+                        <tr ng-repeat="model in vm.m.Models">
+                            <td><a ng-href="{{model.viewUrl}}">{{model.Name}}</a></td>
+                            <td>
+                                <a ng-if="model.HelpLink" ng-href="{{model.HelpLink}}" target="_blank">{{model.HelpLink}}</a>
+                                <span ng-if="!model.HelpLink">N/A</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <status-reporter active="vm.status.isBusy" title="vm.status.title"
+                     description="vm.status.description"></status-reporter>
+</div>
